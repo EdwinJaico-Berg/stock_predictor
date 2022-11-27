@@ -1,7 +1,6 @@
 import pandas as pd
-from dash import html
+from dash import html, dcc
 import plotly.express as px
-import dash_core_components as dcc
 
 
 def render(data: pd.DataFrame) -> html.Div:
@@ -14,6 +13,10 @@ def render(data: pd.DataFrame) -> html.Div:
             'Close': 'Closing Price',
             'Date': 'Date'
         }
+    )
+
+    fig.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)'
     )
 
     fig.update_xaxes(rangeslider_visible=True)
