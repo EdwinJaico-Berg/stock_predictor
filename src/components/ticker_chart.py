@@ -62,8 +62,36 @@ def render(app: Dash) -> html.Div:
         # Add title and axes
         fig.update_layout(
             yaxis_title='Closing Price',
-            title='Stock Price Prediction',
-            paper_bgcolor='rgba(0,0,0,0)'
+            paper_bgcolor='rgba(0,0,0,0)',
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1
+            )
         )
 
         return html.Div(dcc.Graph(figure=fig))
+
+# def predict_price(app: Dash) -> float:
+#     @app.callback(
+#         Output(component_id='ticker_output', component_property='children'),
+#         Input(component_id='ticker_input', component_property='value')
+#     )
+#     def calculate_predcition_price(input_value: str) -> float:
+#         ticker = yf.Ticker(input_value)
+#         data = ticker.history(period='1mo')
+#         data = data[['Close']]
+#         test = data.values
+        
+#         scaler = MinMaxScaler()
+
+#         test = scaler.fit_transform(test)
+#         test - np.array([test])
+    
+#         lstm_model = load_model("./src/model.h5")
+
+#         prediction = lstm_model.predict(test)
+#         prediction = scaler.inverse_transform(prediction)
+#         return prediction
