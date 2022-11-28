@@ -2,8 +2,8 @@ import pandas as pd
 from dash import Dash, html, dcc
 import src.components.spy_chart as spy_chart
 import src.components.ticker_chart as ticker_chart
-import src.components.create_fig as create_fig
 import src.components.earnings_table as earnings
+import src.components.price_chart as price
 
 
 
@@ -19,20 +19,6 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                 className='custom-tabs-container',  
                 colors={'primary': '#FF4136'}, 
                 children=[
-                    dcc.Tab(
-                        label='S&P 500',
-                        value='tab-1',
-                        className='custom-tab',
-                        selected_className='custom-tab--selected', 
-                        children=[
-                            html.Div(
-                                className='app-div', 
-                                children=[
-                                    spy_chart.render(data)
-                                ]
-                            )
-                        ]
-                    ),
                     dcc.Tab(
                         label='Ticker',
                         value='tab-2',
@@ -63,13 +49,14 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                                                 ],
                                             ),
                                             dcc.Loading(
-                                                dcc.Graph(
-                                                    id='price-graph',
-                                                    figure=create_fig.blank_fig(),
-                                                    config={"displayModeBar": False}
+                                                html.Div(
+                                                    id='price_graph',
+                                                    children=[
+                                                        price.render(app)
+                                                    ]
                                                 ),
                                                 className="svg-container",
-                                                style={"height": 150}
+                                                style={"height": 400}
                                             ),
                                         ]
                                     ),
@@ -83,11 +70,15 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                                                     "Earnings"
                                                 ],
                                             ),
-                                            html.Div(
-                                                id='earnings_graph',
-                                                children=[
-                                                    earnings.render(app)
-                                                ],
+                                            dcc.Loading(
+                                                html.Div(
+                                                    id='earnings_graph',
+                                                    children=[
+                                                        earnings.render(app)
+                                                    ],
+                                                ),
+                                                className="svg-container",
+                                                style={"height": 400}
                                             )
                                         ]
                                     )
@@ -101,7 +92,21 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                                 ]
                             )
                         ]
-                    )
+                    ),
+                    dcc.Tab(
+                        label='S&P 500',
+                        value='tab-1',
+                        className='custom-tab',
+                        selected_className='custom-tab--selected', 
+                        children=[
+                            html.Div(
+                                className='app-div', 
+                                children=[
+                                    spy_chart.render(data)
+                                ]
+                            )
+                        ]
+                    ),
                 ]
             ),
             html.Div(
