@@ -2,13 +2,16 @@ import pandas as pd
 from dash import Dash, html, dcc
 import src.components.spy_chart as spy_chart
 import src.components.ticker_chart as ticker_chart
+import src.components.create_fig as create_fig
+import src.components.earnings_table as earnings
+
 
 
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
     return html.Div(
         className="app-div", 
         children=[
-            html.H1(app.title),
+            html.H3(app.title),
             dcc.Tabs(
                 id='tabs-with-classes',
                 value='tab-1',
@@ -48,9 +51,53 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                                 ]
                             ),
                             html.Div(
-                                id='ticker_output', 
                                 children=[
-                                    ticker_chart.render(app)
+                                    html.Div(
+                                        className='six columns pretty-container',
+                                        id='price-div',
+                                        children=[
+                                            html.H4(
+                                                className="container_title",
+                                                children=[
+                                                    "Prediction Price"
+                                                ],
+                                            ),
+                                            dcc.Loading(
+                                                dcc.Graph(
+                                                    id='price-graph',
+                                                    figure=create_fig.blank_fig(),
+                                                    config={"displayModeBar": False}
+                                                ),
+                                                className="svg-container",
+                                                style={"height": 150}
+                                            ),
+                                        ]
+                                    ),
+                                    html.Div(
+                                        className='six columns pretty-container',
+                                        id='earnings-div',
+                                        children=[
+                                            html.H4(
+                                                className="container_title",
+                                                children=[
+                                                    "Earnings"
+                                                ],
+                                            ),
+                                            html.Div(
+                                                id='earnings_graph',
+                                                children=[
+                                                    earnings.render(app)
+                                                ],
+                                            )
+                                        ]
+                                    )
+                                ]
+                            ),
+                            html.Div(
+                                id='ticker_output',
+                                className="twelve columns pretty-container", 
+                                children=[
+                                    ticker_chart.render(app),
                                 ]
                             )
                         ]
@@ -59,7 +106,54 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
             ),
             html.Div(
                 id='bottom-banner',
-                className='bottome-banner'
-            )
+                className='banner',
+                children=[
+                    html.Div(
+                        className='image-div',
+                        style= {'display':'inline-block', 'float':'left'},
+                        children=[
+                            html.A(
+                                href='https://github.com/EdwinJaico-Berg',
+                                children=[
+                                    html.Img(
+                                        alt='My GitHub profile',
+                                        src="assets/images/icons8-github.svg"
+                                    )
+                                ]
+                            ),
+                        ]
+                    ),
+                    html.Div(
+                        className='image-div',
+                        style= {'display':'inline-block', 'float':'left'},
+                        children=[
+                            html.A(
+                                href='https://www.linkedin.com/in/edwin-j-berg/',
+                                children=[
+                                    html.Img(
+                                        alt='My LinkedIn profile',
+                                        src="assets/images/icons8-linkedin.svg"
+                                    )
+                                ]
+                            ),
+                        ]
+                    ),
+                    html.Div(
+                        className='image-div',
+                        style= {'display':'inline-block', 'float':'left'},
+                        children=[
+                            html.A(
+                                href='https://twitter.com/ejaicoberg',
+                                children=[
+                                    html.Img(
+                                        alt='My Twitter profile',
+                                        src="assets/images/icons8-twitter.svg"
+                                    )
+                                ]
+                            ),
+                        ]
+                    ),
+                ]
+            ),
         ]
     )
