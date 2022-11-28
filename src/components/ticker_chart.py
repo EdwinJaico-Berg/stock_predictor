@@ -2,7 +2,6 @@ import datetime
 import numpy as np
 import pandas as pd
 import yfinance as yf
-import plotly.express as px
 import plotly.graph_objects as go
 
 from tensorflow.keras.models import load_model
