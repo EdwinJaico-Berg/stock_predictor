@@ -19,6 +19,8 @@
 
 I have built a LSTM network that is able to predict the price of stocks given 30 days of historical data. The information of the stock price prediction, alongside other metrics such as the EPS are displayed in this interactive dashboard.
 
+The environment folder contains the conda environment used to develop this project.
+
 <p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
 <!-- ROADMAP -->
@@ -44,8 +46,8 @@ Project Link: [https://github.com/EdwinJaico-Berg/stock_predcitor](https://githu
 
 
 <!-- Credits -->
-<div>
-    <p>
-        Image: 'financial report' by Nuzulis Syafaah from <a href="https://thenounproject.com/browse/icons/term/financial-report/" target="_blank" title="financial report Icons">Noun Project</a>)
-    </p>
-</div>
+## Credits
+
+Image: 'financial report' by Nuzulis Syafaah from <a href="https://thenounproject.com/browse/icons/term/financial-report/" target="_blank" title="financial report Icons">Noun Project</a>)
+
+<p align="right">(<a href="#readme-top">Back to top</a>)</p>
