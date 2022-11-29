@@ -3,129 +3,159 @@ from dash import Dash, html, dcc
 import src.components.ticker_chart as ticker_chart
 import src.components.earnings_chart as earnings
 import src.components.price_chart as price
-
-colours = ['#252744D', '#464866', '#AAABB8', '#2E9CCA', '#29648A']
+import src.components.get_title as get_title
 
 def create_layout(app: Dash) -> html.Div:
-    return html.Div( 
+    return html.Div(
+        className='body',
         children=[
-            html.H4(app.title),
-            html.Div(
-                id='ticker_search',
-                className='pretty-container',
-                style={'textAlign': 'center'}, 
+            html.Div( 
+                className='sidenav',
                 children=[
-                    dcc.Input(
-                        id='ticker_input',
-                        type='search',
-                        placeholder='Search for a ticker...',
-                        value='AAPL'
-                    )
-                ]
-            ),
-            html.Div(
-                id='ticker_output',
-                className="twelve columns pretty-container", 
-                children=[
-                    ticker_chart.render(app),
-                ]
-            ),
-            html.Div(
-                id='div-container',
-                className="twelve columns pretty-container",
-                children=[
-                    html.Div(
-                        id='price-div',
-                        className='six columns pretty-container',
-                        children=[
-                            html.H5(
-                                className="container_title",
-                                children=[
-                                    "Prediction Price"
-                                ],
-                            ),
-                            dcc.Loading(
-                                html.Div(
-                                    id='price_graph',
-                                    children=[
-                                        price.render(app)
-                                    ]
-                                ),
-                                className="svg-container",
-                                style={"height": 400}
-                            ),
-                        ]
+                    html.H4(
+                        app.title
                     ),
                     html.Div(
-                        id='earnings-div',
-                        className='six columns pretty-container',
-                        children=[
-                            html.H5(
-                                className="container_title",
-                                children=[
-                                    "Earnings"
-                                ],
+                        className='search-container',
+                        children=[       
+                            dcc.Input(
+                                id='ticker_input',
+                                type='search',
+                                placeholder='Enter ticker...',
+                                value='AAPL'
                             ),
-                            dcc.Loading(
-                                html.Div(
-                                    id='earnings_graph',
-                                    children=[
-                                        earnings.render(app)
-                                    ],
-                                ),
-                                className="svg-container",
-                                style={"height": 400}
+                            html.Img(
+                                src="assets/images/icons8-search.svg"
                             )
                         ]
-                    )
-                ]
-            ),
-            html.Div(
-                className='twelve columns bottom-banner',
-                children=[
-                    html.Div(
-                        className='four columns image-div',
-                        children=[
-                            html.A(
-                                href='https://github.com/EdwinJaico-Berg',
-                                children=[
-                                    html.Img(
-                                        alt='My GitHub profile',
-                                        src="assets/images/icons8-github.svg"
-                                    )
-                                ]
-                            ),
-                        ]
                     ),
                     html.Div(
-                        className='four columns image-div',
+                        className='contact-container',
                         children=[
+                            html.H5(
+                                children=[
+                                    "Contact"
+                                ]
+                            ),
                             html.A(
                                 href='https://www.linkedin.com/in/edwin-j-berg/',
                                 children=[
-                                    html.Img(
-                                        alt='My LinkedIn profile',
-                                        src="assets/images/icons8-linkedin.svg"
+                                    html.H6(
+                                        "LinkedIn"
                                     )
+                                ]
+                            ),
+                            html.A(
+                                href='https://github.com/EdwinJaico-Berg',
+                                children=[
+                                    html.H6(
+                                        "GitHub"
+                                    )
+                                ]
+                            ),
+                            html.A(
+                                href='https://twitter.com/ejaicoberg',
+                                children=[
+                                    html.H6(
+                                        "Twitter"
+                                    )
+                                ]
+                            ),
+                        ]
+                    )
+                ]
+            ),
+            html.Div(
+                className='main',
+                children=[
+                    html.Div(
+                        className='main-title-container',
+                        children=[
+                            html.H3(
+                                id='ticker-title',
+                                children=[
+                                    get_title.render(app)
+                                ]
+                            )
+                        ]
+                    ),
+                    html.Div(
+                        id='price-chart',
+                        className="wide-container",
+                        children=[
+                            html.Div(
+                                className='sub-title-container',
+                                children=[
+                                    html.H6(
+                                        "Price Prediction Chart",
+                                        id='price-chart-title',
+                                        className='sub-title',
+                                    ),
+                                ]
+                            ),
+                            html.Div(
+                                id='ticker_output',
+                                className="twelve columns pretty-container", 
+                                children=[
+                                    ticker_chart.render(app),
                                 ]
                             ),
                         ]
                     ),
                     html.Div(
-                        className='four columns image-div',
+                        className="wide-container",
                         children=[
-                            html.A(
-                                href='https://twitter.com/ejaicoberg',
+                            html.Div(
+                                id='price-indicator',
+                                className="narrow-container",
                                 children=[
-                                    html.Img(
-                                        alt='My Twitter profile',
-                                        src="assets/images/icons8-twitter.svg"
-                                    )
+                                    html.Div(
+                                        className='sub-title-container',
+                                        children=[
+                                            html.H6(
+                                                "Price Prediction",
+                                                id='price-prediction-title',
+                                                className='sub-title',
+                                            ),
+                                        ]
+                                    ),
+                                    dcc.Loading(
+                                        html.Div(
+                                            id='price_graph',
+                                            children=[
+                                                price.render(app)
+                                            ]
+                                        ),
+                                    ),
+                                ]
+                            ),
+                            html.Div(
+                                id='earnings-graph',
+                                className="narrow-container",
+                                children=[
+                                    html.Div(
+                                        className='sub-title-container',
+                                        children=[
+                                            html.H6(
+                                                "Earnings",
+                                                id='earnings-title',
+                                                className='sub-title',
+                                            ),
+                                        ]
+                                    ),
+                                    dcc.Loading(
+                                        html.Div(
+                                            id='earnings_graph',
+                                            children=[
+                                                earnings.render(app)
+                                            ],
+                                        ),
+                                    ),
                                 ]
                             ),
                         ]
-                    ),
+                    )
                 ]
-            ),
+            )
         ]
     )
