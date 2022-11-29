@@ -7,7 +7,7 @@ from dash_bootstrap_components.themes import BOOTSTRAP
 def main() -> None:
     # Initialise the app
     app = Dash(external_stylesheets=[BOOTSTRAP])
-    app.title = 'Stock Predictor'
+    app.title = 'Stock Price Predictor'
     app.layout  = create_layout(app)
     app.run()
 

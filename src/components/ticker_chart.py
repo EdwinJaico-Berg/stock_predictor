@@ -44,7 +44,7 @@ def render(app: Dash) -> html.Div:
             go.Scatter(
                 x=data.index, 
                 y=data['Close'].values,
-                name=f'{input_value} Closing Price'
+                name=f'{ticker.info["symbol"]} Closing Price'
             )
         )
 

@@ -1,4 +1,3 @@
-import numpy as np
 import yfinance as yf
 import plotly.graph_objects as go
 from dash import Dash, html, Input, Output, dcc
