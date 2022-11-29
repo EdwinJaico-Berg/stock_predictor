@@ -2,7 +2,3 @@
 .ipynb_checkpoints/
 __pycache__/
 .DS_Store
-
-# Specific
-Notes.ipynb
-app.py
