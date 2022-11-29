@@ -17,6 +17,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<img src="./assets/images/example.png", alt="Screenshot of dashboard"> 
+
 I have built a LSTM network that is able to predict the price of stocks given 30 days of historical data. The information of the stock price prediction, alongside other metrics such as the EPS are displayed in this interactive dashboard.
 
 The environment folder contains the conda environment used to develop this project.

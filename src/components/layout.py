@@ -126,6 +126,7 @@ def create_layout(app: Dash) -> html.Div:
                                                 price.render(app)
                                             ]
                                         ),
+                                        type='circle',
                                     ),
                                 ]
                             ),
@@ -150,6 +151,7 @@ def create_layout(app: Dash) -> html.Div:
                                                 earnings.render(app)
                                             ],
                                         ),
+                                        type='circle',
                                     ),
                                 ]
                             ),
