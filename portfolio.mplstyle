@@ -1,0 +1,92 @@
+## ***************************************************************************
+## * LINES                                                                   *
+## ***************************************************************************
+lines.linewidth: 1
+
+
+## ***************************************************************************
+## * BOXPLOT                                                                 *
+## ***************************************************************************
+
+
+## ***************************************************************************
+## * FONT                                                                    *
+## ***************************************************************************
+font.family:  Courier New
+font.style:   normal
+font.variant: normal
+font.weight:  normal
+font.stretch: normal
+font.size:    12.0
+
+font.serif:      cm, Latin Modern Roman, DejaVu Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
+font.sans-serif: Latin Modern Sans, DejaVu Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+font.monospace:  Courier, Latin Modern Mono, DejaVu Sans Mono, Andale Mono, Nimbus Mono L, Courier New, Fixed, Terminal, monospace
+
+
+## ***************************************************************************
+## * TEXT                                                                    *
+## ***************************************************************************
+text.color: white
+
+
+## ***************************************************************************
+## * AXES                                                                    *
+## ***************************************************************************
+axes.facecolor:     (0,0,0,0)   # axes background color
+axes.edgecolor:    white      # axes edge color
+axes.linewidth:      0.5        # edge line width
+axes.titlesize:      x-large
+axes.titleweight:    bold
+axes.labelcolor:   white
+axes.labelweight:    bold
+
+axes.spines.top:     False      # do not display axis spines
+axes.spines.right:   False
+
+axes.prop_cycle: cycler('color', ['FF5E5B', '667761', 'FFFFEA', '8D6A9F', 'F0A202', '81717A', 'C6878F', '67697C', 'A24936', 'D36135']) # , 'e9e3e6', '270722', 'C6878F', '67697C', 'A24936', 'D36135', 'FABC2A', '81717A', '9D8CA1', '0B6E4F'
+
+
+
+## ***************************************************************************
+## * TICKS                                                                   *
+## ***************************************************************************
+xtick.color:         white   # color of the ticks
+
+ytick.color:         white   # color of the ticks
+
+## ***************************************************************************
+## * GRIDS                                                                   *
+## ***************************************************************************
+grid.linestyle: -          # solid
+grid.linewidth: 0.8        # in points
+grid.alpha:     0.5        # transparency, between 0.0 and 1.0
+
+
+## ***************************************************************************
+## * LEGEND                                                                  *
+## ***************************************************************************
+legend.fancybox: False
+legend.frameon:  False
+
+
+## ***************************************************************************
+## * FIGURE                                                                  *
+## ***************************************************************************
+figure.dpi:         1200       # figure dots per inch
+figure.facecolor:   (0,0,0,0)  # figure face color
+figure.edgecolor:   (0,0,0,0)  # figure edge color
+figure.autolayout:  True
+
+
+## ***************************************************************************
+## * SCATTER PLOTS                                                           *
+## ***************************************************************************
+scatter.marker: o         # The default marker type for scatter plots.
+scatter.edgecolors: face  # The default edge colors for scatter plots.
+
+## ***************************************************************************
+## * SAVING FIGURES                                                          *
+## ***************************************************************************
+savefig.format: svg
+savefig.transparent: True
